@@ -1,0 +1,20 @@
+<div class="header">
+    <h1>
+      {{cvheader.prenom}} <span class="text-blue text-uppercase" [ngStyle]="{'color': cvheader.color}">{{ cvheader.nom }}</span>
+    </h1>
+    <p>{{ cvheader.titre }}</p>
+    <ul class="infos">
+      <li>
+        <i class="icon fas fa-at " [ngStyle]="{'color': cvheader.color}"></i>
+        <a href="mounazouari@gmail.com">
+          <p>{{ cvheader.email }}</p>
+        </a>
+      </li>
+      <br />
+      <li><i class="icon fas fa-phone text-blue"></i> {{ cvheader.telephone }}</li>
+      <br />
+      <li><i class="icon fas fa-map-marker-alt text-blue"></i> Sfax , Tunisie</li>
+    </ul>
+  </div>
+  
+  

@@ -1,0 +1,15 @@
+<div class="section">
+    <h2>Expériences <br /><span [ngStyle]="{'color': cvexperience?.color}">professionelles</span></h2>
+    <div *ngFor="let experience of cvexperience?.experiences" >
+    <p>
+      <strong>{{experience.date_debut}}<i class="fas fa-long-arrow-alt-right"></i> {{experience.date_fin}}</strong>
+      <br />
+      {{experience.title_experience}}<em>{{experience.company_experience}}</em>
+    </p>
+    <ul class="experience-list">
+      {{experience.desc_experience}}
+    </ul>
+  </div>  
+  </div>
+  
+  

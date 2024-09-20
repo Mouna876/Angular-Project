@@ -1,0 +1,16 @@
+<div class="page" >
+    <div>
+    <button *ngIf="innerWidth <= 768"  (click)="showCv()"> {{ hasShowCv ? "X" : "Preview"}} </button>
+</div>
+    <div class="form-container ">
+      <div *ngIf="innerWidth >768 || !hasShowCv"  [ngClass]="{'col-6' : innerWidth >768 , 'col-12' : innerWidth <=768  }">
+      <app-formulaire></app-formulaire>
+    </div>
+    </div>
+      <div class="cv">
+        <div *ngIf="innerWidth >768 || hasShowCv" [ngClass]="{'col-6' : innerWidth >768 , 'col-12' : innerWidth <=768 , 'is-mobile' : innerWidth <=768 }">
+        <app-cv  class="cv-content"></app-cv>
+      </div>
+  
+  </div>
+  

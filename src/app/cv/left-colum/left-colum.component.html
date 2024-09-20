@@ -1,0 +1,29 @@
+  <div class="left-column" [ngStyle]="{'background-color': cvleft.color}">
+  <img class="portait" src="https://www.codeur.com/tuto/wp-content/uploads/2022/01/MG_0110-4-293x300.jpg" />
+  <div class="section">
+  <p>
+    <i class="icon fab fa-linkedin text-darkblue"></i>  {{ cvleft.prenom }}{{ cvleft.nom }}
+  </p>
+  </div>
+  <div class="section">
+    <h2>À PROPOS</h2>
+    <p>{{ cvleft.description }}</p>
+  </div>
+  <div class="section">
+  <h2>COMPÉTENCES</h2>
+  <ul class="skills">
+    <li *ngFor="let competance of cvleft.competances ">
+      <strong>{{ competance }}</strong>
+  </ul>
+  </div>
+  <div class="section">
+  <h2>Langues</h2>
+  <li *ngFor="let langue of cvleft.langues ">
+    <strong>{{ langue }}</strong>
+  </div>
+  <div class="section">
+  <h2>Centres d'intérêt</h2>
+  <li *ngFor="let ci of cvleft.cis ">
+    <strong>{{ ci }}</strong>
+  </div>
+  </div>

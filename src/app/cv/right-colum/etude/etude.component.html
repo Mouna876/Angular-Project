@@ -1,0 +1,10 @@
+<div class="section">
+  <h2>Études et Formations</h2>
+  <div *ngFor="let etude of cvetude.etudes">
+    <p>
+      <strong>{{ etude.date_debut }} <i class="fas fa-long-arrow-alt-right"></i> {{ etude.date_fin }}</strong>
+      <br />
+      <em>{{ etude.title_etude }}</em>, {{ etude.local_etude }}
+    </p>
+  </div>
+</div>

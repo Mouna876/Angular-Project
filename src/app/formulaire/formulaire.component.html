@@ -1,0 +1,154 @@
+<div class="sectionn">
+  <br>
+  <div class="text-center " > <!-- Button -->
+    <button routerLink="/pdf" class="btn btn-outline-dark">Voir</button> &nbsp;&nbsp;
+    <button (click)="afficherData(nomInput.value,prenomInput.value,emailInput.value,telephoneInput.value,DescInput.value)" class="btn btn-outline-primary">Enregistrer</button>
+  </div>
+  <br />
+    <div class="container" >
+      <div  style="margin-left: 80%;">
+        <input class="theme" [(colorPicker)]="color" [style.background]="color" placeholder="Picke your Theme"/>
+      </div>
+      <br />
+    <hr style="border: 2px solid #eff2f96c; width: 536px;"  >
+    <br>
+    
+    <br>
+    <h5 style="margin-left: 12px;">Personal Details</h5><br>
+      <div> <!-- information --> 
+    <div class="row">
+      <div class="col-md-7" >
+        <div class="form-group">
+          <label for="nom">Nom</label><br/>  
+          <input type="text" class="gray-input small-inputt" id="nom" name="nom" required #nomInput  >
+        </div>
+        <div class="form-group">
+          <label for="nom">Pseudo Github</label><br/>  
+          <input type="text" class="gray-input small-inputt" id="nom" name="nom" required #pseudoInput  >
+          <button (click)="getRepo(pseudoInput.value)"> integrer mes projet de git </button> 
+          {{githubData | json}}
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group" style="margin-left: 10px;">
+          <label style="margin-left: 100px;" for="prenom" >Prénom</label><br/>
+          <input style="margin-left: 100px;" type="text"  class="gray-input small-inputt" id="prenom" name="prenom" required #prenomInput >
+        </div>
+      </div>
+    </div>    
+      <div class="form-group">
+        <label for="email" style="margin-left: 1rem;">E-mail</label><br/>  
+        <input type="email" class="gray-input small-input" id="email" name="email" required #emailInput >
+      </div>
+      <div class="form-group">
+        <label for="telephone" style="margin-left: 1rem;">Téléphone</label><br/>  
+        <input type="tel" class="gray-input small-input" id="telephone" name="telephone"  required #telephoneInput >
+      </div>
+    </div>
+      <div class="mb-3">
+        <br>
+        <h5 style="margin-left: 12px;">Professional Summary</h5><br>
+        <textarea class="gray-input small-input" #DescInput  rows="3"></textarea>
+      </div>
+      <div class="form-group"> <!-- Competence -->
+        <h5 style="margin-left: 12px;">Competence</h5><br>
+        <input class="form-group gray-input small-input" [(ngModel)]="newCompetance" (keyup.enter)="addCompetance()" >
+          <li *ngFor="let competance of competances; let i = index">
+          <input class="form-group gray-input small-input" [(ngModel)]="competances[i]" >
+           <button class="btn btn-outline-danger" (click)="removeCompetance(i)">Supprimer</button>
+          </li>
+      </div>
+      <div class="form-group"> <!-- Langues-->
+        <h5 style="margin-left: 12px;">Langues</h5><br>
+        <input class="form-group gray-input small-input" [(ngModel)]="newLangue" (keyup.enter)="addLangue()" >
+          <li *ngFor="let langue of langues; let i = index">
+          <input class="form-group gray-input small-input" [(ngModel)]="langues[i]" >
+          <button class="btn btn-outline-danger" (click)="removeLangue(i)">Supprimer</button>
+          </li>
+      </div>
+      <div class="form-group"> <!-- Centres d'interet -->
+        <h5 style="margin-left: 12px;">Centres d'intérêt</h5><br>
+        <input class="form-group gray-input small-input" [(ngModel)]="newCI" (keyup.enter)="addCI()" >
+        <li *ngFor="let ci of cis; let i = index">
+            <input class="form-group gray-input small-input" [(ngModel)]="cis[i]" >
+            <button class="btn btn-outline-danger" (click)="removeCI(i)">Supprimer</button>
+        </li>
+      </div>
+      <div class="form-group"> <!-- Expériences Professionnelles -->
+        <h5 style="margin-left: 12px;">Expériences Professionnelles</h5>
+        <div class="row" *ngFor="let experience of experiences; let i = index">
+          <div class="col-md-5">
+            <br>
+            <label for="date_debut_experience{{ i }}">Date Début</label><br/>  
+            <input type="date" class="form-group  small-inputt gray-input col-md-9" [name]="'date_debut_experience' + i" required [(ngModel)]="experience.date_debut">
+          </div>
+          <div class="col-md-6">
+            <br>
+            <label style="margin-left: 150px;" for="date_fin_experience{{ i }}">DateFin</label><br/>  
+            <input style="margin-left: 150px;" type="date" class="form-group gray-input small-inputt col-md-8" [name]="'date_fin_experience' + i" required [(ngModel)]="experience.date_fin">
+          </div>
+          <div class="col-md-5">
+            <br>
+            <label for="title_experience{{ i }}">Intitulé du poste</label><br/>  
+            <input type="text" class="form-group small-inputt gray-input " [name]="'title_experience' + i" required [(ngModel)]="experience.title_experience">
+          </div>
+          <div class="col-md-6" >
+            <br>
+            <label for="company_experience{{ i }}" style="margin-left: 150px;">Nom de l'entreprise</label><br/>  
+            <input style="margin-left: 150px;" type="text" class="form-group gray-input small-inputt" [name]="'company_experience' + i" required [(ngModel)]="experience.company_experience" >
+          </div>
+            <br>
+            <label for="desc_experience{{ i }}">Description des taches </label><br/>  
+            <textarea style="margin-left: 10px;" type="text" class="form-group gray-input col-md-7" [name]="'desc_experience' + i" required [(ngModel)]="experience.desc_experience"></textarea>
+          <div class="col-md-1">
+            <br>
+            <br>
+            <button style="margin-left: 110px;" class="btn btn-outline-danger" (click)="removeExperience(i)">Supprimer</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <br> 
+          <button class="btn btn-outline-primary" style="margin-left: 15px;" (click)="addExperience()">Ajouter Expérience</button>
+        </div>
+      </div>
+      <div class="form-group"> <!-- Études & Formations -->
+        <h5 style="margin-left: 12px;">Études & Formations</h5>
+        <div class="row" *ngFor="let etude of etudes; let i = index">
+          <div class="col-md-5">
+            <br>
+            <label for="date_debut_etude{{ i }}">Date Début</label><br/>  
+            <input type="date" class="form-group gray-input small-inputt col-md-9" [name]="'date_debut_etude' + i" required [(ngModel)]="etude.date_debut">
+          </div>
+          <div class="col-md-6">
+            <label style="margin-left: 150px;" for="date_fin_etude{{ i }}">Date Fin</label><br/>  
+            <input style="margin-left: 150px;" type="date" class="form-group gray-input small-inputt col-md-8" [name]="'date_fin_etude' + i" required [(ngModel)]="etude.date_fin">
+          </div>
+          <div class="col-md-5">
+            <label for="title_etude{{ i }}">Intitulé </label>
+            <input type="text" class="form-group gray-input small-inputt" [name]="'title_etude' + i" required [(ngModel)]="etude.title_etude">
+          </div>
+          <div class="col-md-6">
+            <label style="margin-left: 150px;" for="local_etude{{ i }}">Lieu</label><br/>  
+            <input style="margin-left: 150px;" type="text" class="form-group gray-input small-inputt" [name]="'local_etude' + i" required [(ngModel)]="etude.local_etude">
+          </div>
+          <div class="col-md-1">
+            <br>
+            <button class="btn btn-outline-danger" (click)="removeEtude(i)">Supprimer</button>
+          </div>
+        </div>
+        <div class="form-group">
+         <br> 
+          <button class="btn btn-outline-primary"  style="margin-left: 15px;" (click)="addEtude()">Ajouter Étude</button>
+        </div>
+      </div>
+      <div class="form-group"> <!-- Autres Experiences -->
+        <h5 style="margin-left: 12px;">Autres Experiences</h5><br>
+        <input class="form-group gray-input small-input" [(ngModel)]="newAE" (keyup.enter)="addAE()" >
+        <li *ngFor="let ae of aes; let i = index">
+            <input class="form-group gray-input small-input" [(ngModel)]="aes[i]" >
+            <button class="btn btn-outline-danger" (click)="removeAE(i)">Supprimer</button>
+        </li>
+      </div>
+    <br>
+    </div>
+</div>

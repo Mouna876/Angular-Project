@@ -1,0 +1,12 @@
+<div class="cv-container">
+
+    <div class="left-colum">
+      <app-left-colum [cvleft]="(cvStore$ | async) || cvInit"></app-left-colum>
+    </div>
+    <div class="right-colum">
+      <app-right-colum [cvRight]="(cvStore$ | async) || cvInit"></app-right-colum>
+    </div>
+ 
+
+
+</div>
